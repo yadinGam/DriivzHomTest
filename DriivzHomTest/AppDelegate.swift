@@ -10,12 +10,26 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    var coordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        initFirstScreen()
         return true
     }
+    
+    private func initFirstScreen() {
+         let window = UIWindow(frame: UIScreen.main.bounds)
+         self.window = window
+         
+         let navigationController = UINavigationController()
+         coordinator = MainCoordinator(with: navigationController)
+         coordinator?.start()
+         
+         window.rootViewController = navigationController
+         window.makeKeyAndVisible()
+     }
 
     // MARK: UISceneSession Lifecycle
 
